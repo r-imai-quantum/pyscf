@@ -18,16 +18,16 @@ class KnownValues(unittest.TestCase):
         self.assertTrue(abs(c0-c1).max() < 1e-14)
 
     def test_c_c(self):
-        a = numpy.random.random((7,1,3,4)).astype(numpy.float32)
-        b = numpy.random.random((2,4,5,7)).astype(numpy.float32)
+        a = numpy.random.random((7,1,3,4)).astype(float32)
+        b = numpy.random.random((2,4,5,7)).astype(float32)
         c0 = numpy.einsum('abcd,fdea->cebf', a, b)
         c1 = einsum('abcd,fdea->cebf', a, b)
         self.assertTrue(c0.dtype == c1.dtype)
         self.assertTrue(abs(c0-c1).max() < 1e-5)
 
     def test_c_d(self):
-        a = numpy.random.random((7,1,3,4)).astype(numpy.float32) + 0j
-        b = numpy.random.random((2,4,5,7)).astype(numpy.float32)
+        a = numpy.random.random((7,1,3,4)).astype(float32) + 0j
+        b = numpy.random.random((2,4,5,7)).astype(float32)
         c0 = numpy.einsum('abcd,fdea->cebf', a, b)
         c1 = einsum('abcd,fdea->cebf', a, b)
         self.assertTrue(c0.dtype == c1.dtype)
@@ -91,14 +91,14 @@ class KnownValues(unittest.TestCase):
 
     def test_d_cslice(self):
         a = numpy.random.random((7,1,3,4))
-        b = numpy.random.random((2,4,5,7)).astype(numpy.float32)
+        b = numpy.random.random((2,4,5,7)).astype(float32)
         c0 = numpy.einsum('abcd,fdea->cebf', a, b[:,:,1:3,:])
         c1 = einsum('abcd,fdea->cebf', a, b[:,:,1:3,:])
         self.assertTrue(c0.dtype == c1.dtype)
         self.assertTrue(abs(c0-c1).max() < 1e-14)
 
     def test_z_cslice(self):
-        a = numpy.random.random((7,1,3,4)).astype(numpy.float32) + 0j
+        a = numpy.random.random((7,1,3,4)).astype(float32) + 0j
         b = numpy.random.random((2,4,5,7))
         c0 = numpy.einsum('abcd,fdea->cebf', a, b[:,:,1:3,:])
         c1 = einsum('abcd,fdea->cebf', a, b[:,:,1:3,:])
@@ -106,7 +106,7 @@ class KnownValues(unittest.TestCase):
         self.assertTrue(abs(c0-c1).max() < 1e-14)
 
     def test_cslice_dslice(self):
-        a = numpy.random.random((7,1,3,4)).astype(numpy.float32) + 0j
+        a = numpy.random.random((7,1,3,4)).astype(float32) + 0j
         b = numpy.random.random((2,4,5,7))
         c0 = numpy.einsum('abcd,fdea->cebf', a[2:6], b[:,:,1:3,2:6])
         c1 = einsum('abcd,fdea->cebf', a[2:6], b[:,:,1:3,2:6])

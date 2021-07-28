@@ -655,7 +655,7 @@ def _contract_rho(bra, ket):
                                  bra.ctypes.data_as(ctypes.c_void_p),
                                  ket.ctypes.data_as(ctypes.c_void_p),
                                  ctypes.c_int(nao), ctypes.c_int(ngrids))
-    elif bra.dtype == numpy.complex128 and ket.dtype == numpy.complex128:
+    elif bra.dtype == numpy.complex128 and ket.dtype == complex128:
         libdft.VXC_zcontract_rho(rho.ctypes.data_as(ctypes.c_void_p),
                                  bra.ctypes.data_as(ctypes.c_void_p),
                                  ket.ctypes.data_as(ctypes.c_void_p),

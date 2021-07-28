@@ -512,8 +512,8 @@ def energy(cc, t1, t2, eris):
 #def get_frozen_mask(cc):
 #    '''See also get_frozen_mask function in pyscf/pbc/mp2/kmp2.py'''
 #
-#    moidxa = [np.ones(x.size, dtype=np.bool) for x in cc.mo_occ[0]]
-#    moidxb = [np.ones(x.size, dtype=np.bool) for x in cc.mo_occ[1]]
+#    moidxa = [np.ones(x.size, dtype=bool) for x in cc.mo_occ[0]]
+#    moidxb = [np.ones(x.size, dtype=bool) for x in cc.mo_occ[1]]
 #    assert(cc.frozen == 0)
 #
 #    if isinstance(cc.frozen, (int, np.integer)):

@@ -740,7 +740,7 @@ def dot(a, b, alpha=1, c=None, beta=0):
     atype = a.dtype
     btype = b.dtype
 
-    if atype == numpy.float64 and btype == numpy.float64:
+    if atype == numpy.float64 and btype == float64:
         if c is None or c.dtype == numpy.float64:
             return ddot(a, b, alpha, c, beta)
         else:
@@ -748,7 +748,7 @@ def dot(a, b, alpha=1, c=None, beta=0):
             c.real = ddot(a, b, alpha, cr, beta)
             return c
 
-    elif atype == numpy.complex128 and btype == numpy.complex128:
+    elif atype == numpy.complex128 and btype == complex128:
         # Gauss's complex multiplication algorithm may affect numerical stability
         #k1 = ddot(a.real+a.imag, b.real.copy(), alpha)
         #k2 = ddot(a.real.copy(), b.imag-b.real, alpha)

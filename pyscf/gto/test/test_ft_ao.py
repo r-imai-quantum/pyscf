@@ -46,11 +46,11 @@ def tearDownModule():
 def ft_ao_o0(mol, Gv):
     nao = mol.nao_nr()
     ngrids = Gv.shape[0]
-    aoG = numpy.zeros((nao,ngrids), dtype=numpy.complex)
-    gx = numpy.empty((12,ngrids), dtype=numpy.complex)
-    gy = numpy.empty((12,ngrids), dtype=numpy.complex)
-    gz = numpy.empty((12,ngrids), dtype=numpy.complex)
-    buf = numpy.empty((64,ngrids), dtype=numpy.complex)
+    aoG = numpy.zeros((nao,ngrids), dtype=complex)
+    gx = numpy.empty((12,ngrids), dtype=complex)
+    gy = numpy.empty((12,ngrids), dtype=complex)
+    gz = numpy.empty((12,ngrids), dtype=complex)
+    buf = numpy.empty((64,ngrids), dtype=complex)
     kk = numpy.einsum('ki,ki->k', Gv, Gv)
 
     i0 = 0
@@ -87,7 +87,7 @@ def ft_ao_o0(mol, Gv):
                     buf[i*nfi+m] += cip*val
 
         ti = c2s_bra(li, numpy.eye(nfi)).T
-        tmp1 = numpy.empty((di,ngrids), dtype=numpy.complex)
+        tmp1 = numpy.empty((di,ngrids), dtype=complex)
         for i in range(ni):
             tmp1[i*(li*2+1):(i+1)*(li*2+1)] = \
                     numpy.einsum('pi,px->ix', ti, buf[i*nfi:(i+1)*nfi])

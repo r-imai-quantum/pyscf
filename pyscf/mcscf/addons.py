@@ -500,7 +500,7 @@ def project_init_guess (casscf, mo_init, prev_mol=None, priority=None, use_hf_co
         # Interpret priority keyword
         nocc = ncore + ncas
         if isinstance (priority, str):
-            ridx = numpy.zeros ((2, nmo_init), dtype=numpy.bool)
+            ridx = numpy.zeros ((2, nmo_init), dtype=bool)
             ridx[0,:ncore] = ridx[1,ncore:nocc] = True
             if priority.lower () == 'active': ridx = ridx[::-1,:]
             elif not priority.lower () == 'core':
